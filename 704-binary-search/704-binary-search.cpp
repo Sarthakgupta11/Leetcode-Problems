@@ -7,7 +7,7 @@ public:
         
         while(l<=r)
         {
-           int mid=(l+r)/2;
+           int mid=l+(r-l)/2;
             if(target<nums[mid])
                 r=mid-1;
             else if(target>nums[mid])
