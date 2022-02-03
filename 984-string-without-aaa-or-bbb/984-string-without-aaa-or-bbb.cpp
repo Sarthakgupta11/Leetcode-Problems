@@ -10,14 +10,14 @@ public:
         {
             if((ca<2 && a>=b) || (cb==2 && b>=a))
             {
-                ans=ans+'a';
+                ans.push_back('a');
                 ca++;
                 cb=0;
                 a--;
             }
             else
             {
-                ans=ans+'b';
+                ans.push_back('b');
                 cb++;
                 ca=0;
                 b--;
