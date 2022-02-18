@@ -1,7 +1,7 @@
 class Solution {
 public:
     void f(int ind,vector<int>&dp,vector<int>&nums,vector<vector<int>>&arr,int n){
-        if(ind>=n){
+        if(ind==n){
             arr.push_back(dp);
             return;
         }
