@@ -1,4 +1,3 @@
-
 #define ll long long
 
 class Solution {
@@ -23,6 +22,6 @@ public:
             }
             
         }         
-            return l%1000000007;       
+            return r%1000000007;       
     }
 };
