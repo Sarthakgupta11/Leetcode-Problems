@@ -22,6 +22,6 @@ public:
             }
             
         }         
-            return r%1000000007;       
+            return r%(long long)(1e9+7);       
     }
 };
