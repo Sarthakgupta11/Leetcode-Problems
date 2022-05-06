@@ -17,7 +17,7 @@ public:
             {
                 s.push({a[i],1});
             }
-             if(k==s.top().second)
+             if(k<=s.top().second)
             {
                 int cnt=k;
                 while(cnt--)
