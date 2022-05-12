@@ -1,40 +1,7 @@
 class Solution {
 public:
     
-    bool isSafe(int row,int col,vector<string>board,int n)
-    {
-        int duprow=row;
-        int dupcol=col;
-        
-        while(row>=0 && col>=0)
-        {
-            if(board[row][col]=='Q')
-                return false;
-            row--;
-            col--;
-        }
-        
-        row=duprow;
-        col=dupcol;
-        
-        while(col>=0)
-        {
-            if(board[row][col]=='Q')
-                return false;
-            col--;
-        }
-        col=dupcol;
-        while(row<n && col>=0)
-        {
-            if(board[row][col]=='Q')
-                return false;
-            row++;
-            col--;
-        }
-        return true;            
-    }
-    
-    void solve(int col,vector<vector<string>>&ans,vector<string>board,int n)
+    void solve(int col,vector<vector<string>>&ans,vector<string>board,int n,vector<int>left,vector<int>uppdiag,vector<int>lowdiag)
     {
         if(col==n)
         {
@@ -44,12 +11,18 @@ public:
         
         for(int row=0;row<n;row++)
         {
-            if(isSafe(row,col,board,n))
+            if(left[row]==0 && uppdiag[row+col]==0 && lowdiag[n-1+row-col]==0)
             {
+                left[row]=1;
+                uppdiag[row+col]=1;
+                lowdiag[n-1+row-col]=1;
                 board[row][col]='Q';
-                solve(col+1,ans,board,n);
+                solve(col+1,ans,board,n,left,uppdiag,lowdiag);
                 board[row][col]='.';
-            } 
+                left[row]=0;
+                uppdiag[row+col]=0;
+                lowdiag[n-1+row-col]=0;
+            }
         }
     }
     vector<vector<string>> solveNQueens(int n) 
@@ -60,8 +33,10 @@ public:
         
         for(int i=0;i<n;i++)
         board[i]=s;
+        
+        vector<int>left(n,0);vector<int>uppdiag(2*n-1,0);vector<int>lowdiag(2*n-1,0);
                 
-        solve(0,ans,board,n);
+        solve(0,ans,board,n,left,uppdiag,lowdiag);
         
         return ans;     
     }
