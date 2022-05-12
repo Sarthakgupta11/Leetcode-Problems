@@ -11,17 +11,17 @@ public:
         
         for(int row=0;row<n;row++)
         {
-            if(left[row]==0 && uppdiag[row+col]==0 && lowdiag[n-1+row-col]==0)
+            if(left[row]+uppdiag[n-1+row-col]+lowdiag[row+col]==0)
             {
                 left[row]=1;
-                uppdiag[row+col]=1;
-                lowdiag[n-1+row-col]=1;
+                lowdiag[row+col]=1;
+                uppdiag[n-1+row-col]=1;
                 board[row][col]='Q';
                 solve(col+1,ans,board,n,left,uppdiag,lowdiag);
                 board[row][col]='.';
                 left[row]=0;
-                uppdiag[row+col]=0;
-                lowdiag[n-1+row-col]=0;
+                lowdiag[row+col]=0;
+                uppdiag[n-1+row-col]=0;
             }
         }
     }
