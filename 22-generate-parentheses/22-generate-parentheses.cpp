@@ -17,11 +17,12 @@ public:
             ans.push_back(s);            
         }
     
-            s.push_back('(');
+        s.push_back('(');
         solve(s,o+1,c);
         s.pop_back();
         s.push_back(')');
         solve(s,o,c+1);
+        s.pop_back();
         return;
     }
     vector<string> generateParenthesis(int N) 
