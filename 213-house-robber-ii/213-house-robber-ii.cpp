@@ -1,5 +1,18 @@
 class Solution {
 public:
+    int dp[101];
+    
+    int solve(int i,vector<int>&a)
+    {
+        if(i<0)
+            return 0;
+        
+        if(dp[i]!=-1)
+            return dp[i];
+        
+        return dp[i]=max(solve(i-1,a),a[i]+solve(i-2,a));
+    }    
+    
     int rob(vector<int>& a) 
     {
         int n=a.size();
@@ -10,24 +23,16 @@ public:
         if(n==2)
             return max(a[1],a[0]);
         
-        vector<int>b=a;
+        vector<int>b;
         
-        for(int i=2;i<n-1;i++)
-        {
-            if(i==2)
-            a[i]=a[i]+a[i-2];
-            else
-            a[i]=a[i]+ max(a[i-2],a[i-3]);    
-        }
+        for(int i=1;i<n;i++)
+        b.push_back(a[i]);
         
-        for(int i=3;i<n;i++)
-        {
-            if(i==3)
-                b[i]=b[i]+b[i-2];
-            else
-                b[i]=b[i]+max(b[i-2],b[i-3]);
-        }
+        memset(dp,-1,sizeof(dp));
+        int x=solve(n-2,a);
+        memset(dp,-1,sizeof(dp));
+        int y=solve(n-2,b);
         
-        return max(max(a[n-2],a[n-3]),max(b[n-1],b[n-2]));
+    return max(x,y);
     }
 };
