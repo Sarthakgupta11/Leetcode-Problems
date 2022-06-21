@@ -17,6 +17,8 @@ public:
     int deleteAndEarn(vector<int>& nums) 
     {
         vector<int>a(20001,0);
+        if(nums.size()==0)
+            return 0;
         
         for(int i=0;i<nums.size();i++)
             a[nums[i]]+=nums[i];
