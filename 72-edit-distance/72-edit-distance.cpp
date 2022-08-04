@@ -3,7 +3,7 @@ public:
     
     vector<vector<int>>dp;
     
-    int rec(string s1,int m,string s2,int n)
+    int rec(string &s1,int m,string &s2,int n)
     {
         if(m==0)
             return n;
