@@ -40,8 +40,7 @@ public:
         
         if(ans.empty())
         {
-            ans.push_back(-1);
-            ans.push_back(-1);
+            return {-1,-1};
         }       
         
      return ans;   
