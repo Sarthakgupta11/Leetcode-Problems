@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int dp[100][100];
+    int dp[101][101];
     
     int rec(int r,int c,vector<vector<int>>&matrix)
     {
@@ -24,7 +24,10 @@ public:
         int row=matrix.size();
         int col=matrix[0].size();
         
-        memset(dp,-1,sizeof(dp));
+        for(int i=0;i<101;i++)
+            for(int j=0;j<101;j++)
+                dp[i][j]=-1;
+        
         
         int ans=INT_MAX;
         
